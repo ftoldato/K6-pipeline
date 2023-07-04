@@ -1,0 +1,24 @@
+name: K6 load test
+on: [push]
+permissions:
+  contents: write
+jobs:
+  build: 
+    name: K6 load test
+    runs-on: ubuntu-latest
+    steps:
+      - name: step 1 - checkout
+        uses: actions/checkout@v3
+
+      - name: step 2 - run k6 load test
+        uses: grafana/k6-action@v0.2.0
+        with: 
+          filename: scripts/test.js
+
+      - run: ls & mv index.html scripts
+
+      - name: step 4 - upload artifact
+        uses: actions/upload-artifact@v3
+        with: 
+          name: relatorio de testes de performance
+          path: scripts/index.html
