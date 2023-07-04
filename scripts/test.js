@@ -3,10 +3,9 @@ import { sleep, check, group } from 'k6';
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 export let options = {
+  // Adicione mais etapas se desejar aumentar gradualmente a quantidade de usuários
   stages: [
     { duration: '5s', target: 1 },
-
-    // Adicione mais etapas se desejar aumentar gradualmente a quantidade de usuários
   ],
 };
 
@@ -34,6 +33,7 @@ export default function () {
   // Aguarde por 1 segundo antes de fazer a próxima solicitação
   sleep(1);
 }
+// função que gerar o report em .html
 export function handleSummary(data) {
   return {
     "index.html": htmlReport(data),
