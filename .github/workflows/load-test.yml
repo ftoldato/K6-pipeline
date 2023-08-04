@@ -1,5 +1,5 @@
 name: K6 load test
-on: [push]
+on: [workflow_dispatch]
 permissions:
   contents: write
 jobs:
